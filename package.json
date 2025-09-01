@@ -1,6 +1,6 @@
 {
   "name": "@gldywn/ics23.js",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Provides JavaScript/TypeScript bindings for the official Rust ics23 crate, compiled to WebAssembly via wasm-bindgen and wasm-pack.",
   "homepage": "https://github.com/Gldywn/ics23.js#readme",
   "bugs": {
