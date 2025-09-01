@@ -1,7 +1,7 @@
 {
   "name": "@gldywn/ics23.js",
   "version": "1.0.0",
-  "description": "Provides JavaScript/TypeScript bindings for the official Rust ics23 crate, compiled to WebAssembly via wasm-bindgen and wasm-pack. Offers a clean Node.js-ready API to verify membership or non-membership for single or batch proofs, build batch proofs, compress and decompress batch proofs, access default proof specs, and calculate existence roots.",
+  "description": "Provides JavaScript/TypeScript bindings for the official Rust ics23 crate, compiled to WebAssembly via wasm-bindgen and wasm-pack.",
   "homepage": "https://github.com/Gldywn/ics23.js#readme",
   "bugs": {
     "url": "https://github.com/Gldywn/ics23.js/issues"
