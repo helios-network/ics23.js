@@ -2,17 +2,42 @@
   "name": "@gldywn/ics23.js",
   "version": "1.0.0",
   "description": "Provides JavaScript/TypeScript bindings for the official Rust ics23 crate, compiled to WebAssembly via wasm-bindgen and wasm-pack. Offers a clean Node.js-ready API to verify membership or non-membership for single or batch proofs, build batch proofs, compress and decompress batch proofs, access default proof specs, and calculate existence roots.",
+  "homepage": "https://github.com/Gldywn/ics23.js#readme",
+  "bugs": {
+    "url": "https://github.com/Gldywn/ics23.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gldywn/ics23.js.git"
+  },
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Gldywn",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "rust/pkg",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "test": "jest --runInBand",
     "test:coverage": "npm run test -- --coverage",
     "build": "npm run build:wasm && npm run build:ts",
     "build:ts": "tsup",
     "build:wasm": "wasm-pack build rust --release --target nodejs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gldywn/ics23.js.git"
   },
   "keywords": [
     "ics23",
@@ -36,30 +61,6 @@
     "light-client",
     "cryptography"
   ],
-  "author": "Gldywn",
-  "license": "Apache-2.0",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/Gldywn/ics23.js/issues"
-  },
-  "homepage": "https://github.com/Gldywn/ics23.js#readme",
-  "files": [
-    "dist",
-    "rust/pkg",
-    "README.md",
-    "LICENSE"
-  ],
-  "engines": {
-    "node": ">=18"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
-  },
-  "types": "dist/index.d.ts",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
