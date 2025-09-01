@@ -9,7 +9,6 @@ export default defineConfig({
 	clean: true,
 	loader: {
 		'.json': 'json',
-		'.crt': 'text',
 	},
 });
 
