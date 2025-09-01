@@ -1,0 +1,7 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 99%
+ignore:
+  - "rust/pkg/**"
