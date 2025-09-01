@@ -49,7 +49,7 @@ const spec = defaultIavlSpec();
 // const spec = defaultTendermintSpec();
 // const spec = defaultSmtSpec();
 
-// Proof acquisition: see "Getting proofs" below
+// ℹ️ Proof acquisition: see "Getting proofs" below
 
 // Verify membership (single proof)
 const okMembership = verifyMembership({
@@ -68,7 +68,7 @@ const okNonMembership = verifyNonMembership({
   key,
 });
 
-// Build a batch proof from individual CommitmentProofs
+// Build a batch proof from individual CommitmentProof
 const batch = buildBatchProof([proof1, proof2, proof3]);
 
 // Verify membership (batch proof)

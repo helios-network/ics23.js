@@ -36,7 +36,7 @@
     "light-client",
     "cryptography"
   ],
-  "author": "",
+  "author": "Gldywn",
   "license": "Apache-2.0",
   "type": "module",
   "bugs": {
@@ -45,7 +45,9 @@
   "homepage": "https://github.com/Gldywn/ics23.js#readme",
   "files": [
     "dist",
-    "rust/pkg"
+    "rust/pkg",
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
@@ -53,8 +55,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     }
   },
   "types": "dist/index.d.ts",
