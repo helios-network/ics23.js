@@ -26,22 +26,19 @@ npm install @gldywn/ics23.js
 
 ## Usage
 
-Initialize once before calling other functions. Specs must match the underlying store, use the provided defaults when appropriate.
+Initialize once with `await init();` before calling other functions. The spec must match the underlying store, use the provided default for your target.
 
+#### Single proofs
 ```ts
 import {
   init,
   defaultIavlSpec,
   verifyMembership,
   verifyNonMembership,
-  buildBatchProof,
-  verifyBatchMembership,
-  verifyBatchNonMembership,
-  compressBatchProof,
-  decompressBatchProof,
   calculateExistenceRoot,
-} from '@gldywn/ics23.js'
+} from '@gldywn/ics23.js';
 
+// Initialize once
 await init();
 
 // Choose the spec that matches your underlying store (e.g. IAVL, Tendermint, SMT)
@@ -49,7 +46,7 @@ const spec = defaultIavlSpec();
 // const spec = defaultTendermintSpec();
 // const spec = defaultSmtSpec();
 
-// ℹ️ Proof acquisition: see "Getting proofs" below
+// ℹ️ Proof acquisition: see "Getting proofs" section below
 
 // Verify membership (single proof)
 const okMembership = verifyMembership({
@@ -68,7 +65,21 @@ const okNonMembership = verifyNonMembership({
   key,
 });
 
-// Build a batch proof from individual CommitmentProof
+// Calculate existence root from a single ExistenceProof
+const rootFromProof = calculateExistenceRoot(proof);
+```
+
+#### Batch proofs
+```ts
+import {
+  buildBatchProof,
+  verifyBatchMembership,
+  verifyBatchNonMembership,
+  compressBatchProof,
+  decompressBatchProof,
+} from '@gldywn/ics23.js';
+
+// Build a batch proof from individual CommitmentProofs
 const batch = buildBatchProof([proof1, proof2, proof3]);
 
 // Verify membership (batch proof)
@@ -91,9 +102,6 @@ const okBatchNonMembership = verifyBatchNonMembership({
 // Compress and decompress a batch proof
 const compressed = compressBatchProof(batch);
 const decompressed = decompressBatchProof(compressed);
-
-// Calculate existence root from a single ExistenceProof
-const rootFromProof = calculateExistenceRoot(proof);
 ```
 
 ### Getting proofs
