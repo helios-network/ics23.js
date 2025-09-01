@@ -106,11 +106,10 @@ const decompressed = decompressBatchProof(compressed);
 
 ### Getting proofs
 
-Use gRPC when verifying IBC state (client, connection, channel, packets). Endpoints return `ibc.core.commitment.v1.MerkleProof`, a container of ICS‑23 `CommitmentProof` entries you can pass as bytes. See proto: [commitment.proto](https://github.com/cosmos/ibc-go/blob/main/proto/ibc/core/commitment/v1/commitment.proto). Some methods: `ibc.core.client.v1.Query/ClientState`, `ibc.core.connection.v1.Query/Connection`, `ibc.core.channel.v1.Query/Channel`, `ibc.core.channel.v1.Query/PacketCommitment`.
+- Use gRPC when verifying IBC state (client, connection, channel, packets). Endpoints return `ibc.core.commitment.v1.MerkleProof`, a container of ICS‑23 `CommitmentProof` entries you can pass as bytes. See proto: [commitment.proto](https://github.com/cosmos/ibc-go/blob/main/proto/ibc/core/commitment/v1/commitment.proto). Some methods: `ibc.core.client.v1.Query/ClientState`, `ibc.core.connection.v1.Query/Connection`, `ibc.core.channel.v1.Query/Channel`, `ibc.core.channel.v1.Query/PacketCommitment`.
+- Use CometBFT RPC for arbitrary module KV keys: call [`/abci_query?prove=true`](https://docs.cometbft.com/v0.38/rpc/#/ABCI/abci_query) (e.g., `path=/store/<store>/key`, `data=<key bytes>`, `height=H`), then convert `proofOps` to an ICS‑23 `CommitmentProof` (see conversion in ibc‑go: [utils.go](https://github.com/cosmos/ibc-go/blob/main/modules/core/23-commitment/types/utils.go)).
 
-Use CometBFT RPC for arbitrary module KV keys: call [`/abci_query?prove=true`](https://docs.cometbft.com/v0.38/rpc/#/ABCI/abci_query) (e.g., `path=/store/<store>/key`, `data=<key bytes>`, `height=H`), then convert `proofOps` to an ICS‑23 `CommitmentProof` (see conversion in ibc‑go: [utils.go](https://github.com/cosmos/ibc-go/blob/main/modules/core/23-commitment/types/utils.go)).
-
-When you need to verify many proofs, batch client‑side before verification with `buildBatchProof`.
+*When you need to verify many proofs, batch client‑side before verification with `buildBatchProof`.*
 
 ## Development
 
