@@ -9,7 +9,6 @@ Provides JavaScript/TypeScript bindings for the official Rust [`ics23`](https://
 *This project follows the removal of the TypeScript implementation - see* [PR #353](https://github.com/cosmos/ics23/pull/353).
 
 [![Build Status](https://github.com/Gldywn/ics23.js/actions/workflows/build.yml/badge.svg)](https://github.com/Gldywn/ics23.js/actions/workflows/build.yml)
-[![Coverage Status (codecov.io)](https://codecov.io/gh/Gldywn/ics23.js/branch/main/graph/badge.svg)](https://codecov.io/gh/Gldywn/ics23.js)
 [![npm](https://img.shields.io/npm/v/@gldywn/ics23.js.svg)](https://www.npmjs.com/package/@gldywn/ics23.js)
 [![License: MIT](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)](https://opensource.org/licenses/Apache-2.0)
 
