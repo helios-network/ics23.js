@@ -10,11 +10,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "rootDir": "./src",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": ["node"]
   },
   "include": [
-    "src/**/*",
-    "src/types/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

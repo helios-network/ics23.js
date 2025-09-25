@@ -7,9 +7,12 @@ export default defineConfig({
 	splitting: false,
 	sourcemap: true,
 	clean: true,
+	platform: 'node',
 	loader: {
 		'.json': 'json',
+		'.wasm': 'file',
 	},
+	shims: true,
 });
 
 

@@ -1,3 +1,8 @@
+import fs from 'fs/promises';
+import path from 'path';
+import wasmPath from '../rust/pkg/ics23_wasm_bg.wasm';
+import * as wasm from '../rust/pkg/ics23_wasm.js';
+
 export type Ics23BaseArgs = {
   proof: Uint8Array;
   spec: Uint8Array;
@@ -22,15 +27,23 @@ export class WasmNotInitializedError extends Error {
   }
 }
 
-let wasm: any;
+let initialized = false;
 function ensureWasmInitialized(): void {
-  if (!wasm) throw new WasmNotInitializedError();
+  if (!initialized) throw new WasmNotInitializedError();
 }
 
 export async function init(): Promise<void> {
-  if (wasm) return;
-  const mod: any = await import('../rust/pkg/ics23_wasm.js');
-  wasm = mod?.default ?? mod;
+  if (initialized) return;
+
+  let bytes: ArrayBufferLike = (await fs.readFile(path.resolve(__dirname, wasmPath)))?.buffer;
+  if (!bytes) throw new Error('Failed to read WASM file');
+  // @ts-ignore
+  const { instance } = await WebAssembly.instantiate(bytes, {
+    './ics23_wasm_bg.js': wasm,
+  });
+  (wasm as any).__wbg_set_wasm(instance.exports);
+
+  initialized = true;
 }
 
 export function defaultIavlSpec(): Uint8Array {
